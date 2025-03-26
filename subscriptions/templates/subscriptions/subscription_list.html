@@ -1,17 +1,22 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Subscriptions</title>
-</head>
-<body>
-    <h1>Subscription Plans</h1>
-    <ul>
-        {% for plan in plans %}
-            <li>{{ plan.name }} - ${{ plan.price }}</li>
-        {% empty %}
-            <li>No subscription plans available.</li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+{% extends 'base.html' %}
 
+{% block title %}Subscription Plans - GetFitQuick{% endblock %}
+
+{% block content %}
+    <h1>Our Subscription Plans</h1>
+    <div class="row">
+        {% for plan in plans %}
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ plan.name }}</h5>
+                        <p class="card-text">${{ plan.price }} / month</p>
+                        <a href="#" class="btn btn-primary">Subscribe Now</a>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p>No subscription plans available.</p>
+        {% endfor %}
+    </div>
+{% endblock %}
