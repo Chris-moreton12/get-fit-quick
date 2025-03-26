@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Subscriptions</title>
+</head>
+<body>
+    <h1>Subscription Plans</h1>
+    <ul>
+        {% for plan in plans %}
+            <li>{{ plan.name }} - ${{ plan.price }}</li>
+        {% empty %}
+            <li>No subscription plans available.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
