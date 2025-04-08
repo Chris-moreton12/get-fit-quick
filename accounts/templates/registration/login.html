@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block navbar %}
+
+{% endblock %}
+
+{% block title %}Login - GetFitQuick{% endblock %}
+
+{% block content %}
+<h2>Login</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Login</button>
+    <p>Don't have an account? <a href="{% url 'signup' %}">Sign up here</a></p>
+</form>
+{% endblock %}

@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('products/', include('products.urls')),  # Link to the products app
     path('subscriptions/', include('subscriptions.urls')),  # Link to the subscriptions app
+    path('accounts/', include('accounts.urls')),
 ]
