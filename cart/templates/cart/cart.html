@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Your Basket{% endblock %}
+
+{% block content %}
+    <h1>Your Basket</h1>
+    <div class="row">
+        {% for item in cart_items %}
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.product.name }}</h5>
+                        <p class="card-text">Price: ${{ item.price }}</p>
+                        <p class="card-text">Quantity: {{ item.quantity }}</p>
+                        <p class="card-text">Total: ${{ item.total_price }}</p>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p>No items in your cart.</p>
+        {% endfor %}
+    </div>
+
+    <h3>Total: ${{ total }}</h3>
+
+    <a href="{% url 'cart:checkout' %}" class="btn btn-success">Checkout</a>
+{% endblock %}

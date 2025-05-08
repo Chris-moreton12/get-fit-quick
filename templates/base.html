@@ -30,13 +30,23 @@
                 </ul>
                 <ul class="navbar-nav">
                     {% if user.is_authenticated %}
-                       <li class="nav-item">
-                       <form action="{% url 'logout' %}" method="POST">
-                    {% csrf_token %}
-                        <button type="submit" class="btn btn-link nav-link">Logout</button>
-                        </form>
+                        <!-- Cart Link for Authenticated Users -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'cart:cart' %}">
+                                Cart 🛒
+                                <!-- Display number of items in cart -->
+                                <span class="badge bg-secondary">{{ cart_item_count }}</span>
+                            </a>
+                        </li>
+                        <!-- Logout Button for Authenticated Users -->
+                        <li class="nav-item">
+                            <form action="{% url 'logout' %}" method="POST">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-link nav-link">Logout</button>
+                            </form>
                         </li>
                     {% else %}
+                        <!-- Login & Signup Links for Non-Authenticated Users -->
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'login' %}">Login</a>
                         </li>
