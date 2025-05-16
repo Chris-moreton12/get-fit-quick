@@ -29,3 +29,4 @@ def contact(request):
 # Thank you view (for after form submission)
 def thank_you(request):
     return render(request, 'thank_you.html')  # This will render the 'thank_you.html' template
+
