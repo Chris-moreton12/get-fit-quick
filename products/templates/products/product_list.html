@@ -3,18 +3,22 @@
 {% block title %}Products - GetFitQuick{% endblock %}
 
 {% block content %}
-    <h1>Our Products</h1>
-    <div class="row">
+    <h1 class="text-center mb-4">Our Products</h1>
+    <div class="row justify-content-center">
         {% for product in products %}
             <div class="col-md-4">
                 <div class="card mb-4">
-                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="{{ product.name }}">
-                    <div class="card-body">
+                    {% if forloop.first %}
+                        <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                    {% else %}
+                        <img src="https://via.placeholder.com/150" class="card-img-top" alt="{{ product.name }}">
+                    {% endif %}
+                    <div class="card-body text-center">
                         <h5 class="card-title">{{ product.name }}</h5>
                         <p class="card-text">${{ product.price }}</p>
 
                         <!-- Add to Basket Button -->
-                        <form action="{% url 'cart:add_to_cart' product.id %}" method="POST">
+                        <form action="{% url 'cart:add_to_cart' product.id %}" method="POST" class="d-inline-block">
                             {% csrf_token %}
                             <button type="submit" class="btn btn-primary">Add to Basket</button>
                         </form>
