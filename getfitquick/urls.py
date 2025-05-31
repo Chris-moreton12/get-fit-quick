@@ -11,6 +11,7 @@ urlpatterns = [
     path('subscriptions/', include('subscriptions.urls')),  # Link to the subscriptions app
     path('accounts/', include('accounts.urls')),
     path('contact/', views.contact, name='contact'),
+    path('subscriptions/', include('subscriptions.urls', namespace='subscriptions')), 
 ]
 
 if settings.DEBUG:

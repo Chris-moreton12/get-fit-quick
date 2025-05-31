@@ -4,12 +4,29 @@
 
 {% block content %}
     <h1>Your Basket</h1>
+
     <div class="row">
         {% for item in cart_items %}
             <div class="col-md-4">
                 <div class="card mb-4">
                     <div class="card-body">
-                        <h5 class="card-title">{{ item.product.name }}</h5>
+                        <h5 class="card-title">
+                            {% if item.product %}
+                                {{ item.product.name }}
+                            {% elif item.subscription %}
+                                {{ item.subscription.name }}
+                            {% else %}
+                                Unknown Item
+                            {% endif %}
+                        </h5>
+                        <p class="card-text">
+                            Type:
+                            {% if item.product %}
+                                Product
+                            {% elif item.subscription %}
+                                Subscription
+                            {% endif %}
+                        </p>
                         <p class="card-text">Price: ${{ item.price }}</p>
                         <p class="card-text">Quantity: {{ item.quantity }}</p>
                         <p class="card-text">Total: ${{ item.total_price }}</p>
@@ -29,5 +46,13 @@
 
     <h3>Total: ${{ total }}</h3>
 
-    <a href="{% url 'cart:checkout' %}" class="btn btn-success">Checkout</a>
+    {% if cart_items %}
+        <hr>
+        <h2>Shipping Address</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Proceed to Checkout</button>
+        </form>
+    {% endif %}
 {% endblock %}
