@@ -5,11 +5,14 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 from django.contrib import messages
+from django.core.mail import send_mail
 
 from .models import Cart, CartItem, ShippingAddress
 from .forms import ShippingAddressForm
 from products.models import Product
 from subscriptions.models import SubscriptionPlan
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -127,12 +130,34 @@ def checkout(request):
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
 
-# Checkout success
 @login_required
 def checkout_success(request):
     cart, _ = Cart.objects.get_or_create(user=request.user)
+    cart_items = CartItem.objects.filter(cart=cart)
+
+    context = {
+        'user': request.user,
+        'cart_items': cart_items,
+        'total': sum(item.price * item.quantity for item in cart_items),
+    }
+
+    # Render HTML email template with order summary
+    html_message = render_to_string('cart/order_confirmation_email.html', context)
+    plain_message = strip_tags(html_message)
+
+    # Send email to customer
+    send_mail(
+        subject="Thank you for your purchase at GetFitQuick!",
+        message=plain_message,
+        from_email=None,
+        recipient_list=[request.user.email],
+        html_message=html_message,
+    )
+
+    # Clear cart and session data
     CartItem.objects.filter(cart=cart).delete()
     request.session.pop('shipping_address_id', None)
+
     return render(request, 'cart/checkout_success.html')
 
 # Remove item from cart
