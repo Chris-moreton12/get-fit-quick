@@ -32,3 +32,17 @@ def delete_comment(request, comment_id):
         comment.delete()
 
     return redirect('newsletter:comment_board')
+
+@login_required
+def edit_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id, user=request.user)
+
+    if request.method == 'POST':
+        form = CommentForm(request.POST, instance=comment)
+        if form.is_valid():
+            form.save()
+            return redirect('newsletter:comment_board')
+    else:
+        form = CommentForm(instance=comment)
+
+    return render(request, 'newsletter/edit_comment.html', {'form': form})

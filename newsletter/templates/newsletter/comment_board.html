@@ -24,34 +24,35 @@
     </p>
 </div>
 
-  <h1>Newsletter Comment Board</h1>
+<h1>Newsletter Comment Board</h1>
 
-  <!-- Comment form -->
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">Post Comment</button>
-  </form>
+<!-- Comment form -->
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="btn btn-primary">Post Comment</button>
+</form>
 
-  <hr>
+<hr>
 
-  <!-- Show all comments -->
-  <h3>All Comments</h3>
-  {% for comment in comments %}
-    <div class="card mb-2">
-      <div class="card-body">
-        <p class="card-text">{{ comment.content }}</p>
-        <small class="text-muted">By {{ comment.user.username }} on {{ comment.created_at|date:"M d, Y H:i" }}</small>
+<!-- Show all comments -->
+<h3>All Comments</h3>
+{% for comment in comments %}
+  <div class="card mb-2">
+    <div class="card-body">
+      <p class="card-text">{{ comment.content }}</p>
+      <small class="text-muted">By {{ comment.user.username }} on {{ comment.created_at|date:"M d, Y H:i" }}</small>
 
-        {% if comment.user == request.user %}
-          <form action="{% url 'newsletter:delete_comment' comment.id %}" method="post" class="mt-2">
-            {% csrf_token %}
-            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-          </form>
-        {% endif %}
-      </div>
+      {% if comment.user == request.user %}
+      <a href="{% url 'newsletter:edit_comment' comment.id %}" class="btn btn-warning btn-sm me-2">Edit</a>
+        <form action="{% url 'newsletter:delete_comment' comment.id %}" method="post" class="d-inline">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-danger btn-sm mt-2">Delete</button>
+        </form>
+      {% endif %}
     </div>
-  {% empty %}
-    <p>No comments yet.</p>
-  {% endfor %}
+  </div>
+{% empty %}
+  <p>No comments yet.</p>
+{% endfor %}
 {% endblock %}
