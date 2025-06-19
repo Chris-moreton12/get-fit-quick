@@ -12,6 +12,7 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('contact/', views.contact, name='contact'),
     path('subscriptions/', include('subscriptions.urls', namespace='subscriptions')), 
+    path('newsletter/', include('newsletter.urls', namespace='newsletter')),
 ]
 
 if settings.DEBUG:
