@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}Newsletter Board{% endblock %}
+
+{% block content %}
+
+<div class="newsletter-info mb-4 p-3 border rounded bg-light">
+    <h2>Welcome to GetFitQuick!</h2>
+    <p>
+        At GetFitQuick, we pride ourselves on offering top-notch gym 
+        and swimming pool facilities to help you achieve your fitness goals. 
+        Our fully equipped gym features state-of-the-art machines and 
+        free weights suitable for all fitness levels. Whether you're a 
+        beginner or a seasoned athlete, our space is designed to motivate 
+        and inspire.
+    </p>
+    <p>
+        Dive into our heated swimming pool to improve your cardiovascular 
+        health, enjoy aqua aerobics classes, or simply relax after a workout. 
+        Our pool area is clean, safe, and perfect for all ages.
+    </p>
+    <p>
+        Join our community, stay active, and share your experiences below in the comments!
+    </p>
+</div>
+
+  <h1>Newsletter Comment Board</h1>
+
+  <!-- Comment form -->
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Post Comment</button>
+  </form>
+
+  <hr>
+
+  <!-- Show all comments -->
+  <h3>All Comments</h3>
+  {% for comment in comments %}
+    <div class="card mb-2">
+      <div class="card-body">
+        <p class="card-text">{{ comment.content }}</p>
+        <small class="text-muted">By {{ comment.user.username }} on {{ comment.created_at|date:"M d, Y H:i" }}</small>
+
+        {% if comment.user == request.user %}
+          <form action="{% url 'newsletter:delete_comment' comment.id %}" method="post" class="mt-2">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+          </form>
+        {% endif %}
+      </div>
+    </div>
+  {% empty %}
+    <p>No comments yet.</p>
+  {% endfor %}
+{% endblock %}
