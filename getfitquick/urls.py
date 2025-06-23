@@ -3,8 +3,10 @@ from django.urls import path, include
 from accounts import views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.generic import RedirectView
 
 urlpatterns = [
+    path('', RedirectView.as_view(url='/products/')),
     path('admin/', admin.site.urls),
     path('cart/', include('cart.urls')), 
     path('products/', include('products.urls')),  # Link to the products app
