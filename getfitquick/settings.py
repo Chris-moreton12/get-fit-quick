@@ -159,6 +159,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
-ALLOWED_HOSTS = ['getfitquick-app.herokuapp.com', 'getfitquick-app-794907a0eebb.herokuapp.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['getfitquick-app-794907a0eebb.herokuapp.com', 'localhost', '127.0.0.1']
+
 
 

@@ -1,2 +1,1 @@
-web: gunicorn getfitquick.wsgi
-
+web: gunicorn getfitquick.wsgi --log-file -
