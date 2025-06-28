@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 
 def review_list(request):
     reviews = Review.objects.order_by('-created_at')
-    return render(request, 'reviews/review_list.html', {'reviews': reviews})
+    return render(request, 'reviews/reviews.html', {'reviews': reviews})
 
 @login_required
 def add_review(request):
@@ -15,7 +15,7 @@ def add_review(request):
             review = form.save(commit=False)
             review.user = request.user
             review.save()
-            return redirect('review_list')
+            return redirect('reviews')
     else:
         form = ReviewForm()
     return render(request, 'reviews/add_review.html', {'form': form})
