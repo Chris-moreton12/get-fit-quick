@@ -16,6 +16,7 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('contact/', views.contact, name='contact'),
     path('newsletter/', include(('newsletter.urls', 'newsletter'), namespace='newsletter')),
+    path('reviews/', include('reviews.urls')),
 ]
 
 # Serve media files in development
