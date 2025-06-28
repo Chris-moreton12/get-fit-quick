@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'subscriptions',
     'cart',
     'newsletter',
+    'reviews',
 ]
 
 STATIC_URL = '/static/'
