@@ -21,6 +21,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ plan.name }}</h5>
                         <p class="card-text">${{ plan.price }} / month</p>
+                        <p class="card-text">{{ plan.description }}</p>
                         <a href="{% url 'cart:add_subscription_to_cart' plan.id %}" class="btn btn-primary">Subscribe Now</a>
                     </div>
                 </div>
