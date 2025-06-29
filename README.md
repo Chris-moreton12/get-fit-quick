@@ -44,8 +44,7 @@ GetFitQuick is a subscription-based fitness and nutrition service that provides 
 - **Text & Highlights:** `#fff`, `#ff6347`, `#eeecec`
 
 ### Typography
-- **H1:** [Lobster](https://fonts.google.com/specimen/Lobster)
-- **Subheadings (H2–H6):** [Montserrat](https://fonts.google.com/specimen/Montserrat)
+- **H1-H6:** [Lobster](https://fonts.google.com/specimen/Lobster)
 - **Body Text:** [Open Sans](https://fonts.google.com/specimen/Open+Sans)
 - **Fallback Font:** `sans-serif`
 
