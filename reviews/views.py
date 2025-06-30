@@ -9,12 +9,9 @@ def review_list(request):
 
 @login_required
 def add_review(request):
-    # Intentional error to test DEBUG = False
-    raise Exception("Test error: checking if DEBUG mode is off")
-
-    if request.method == 'POST':
+    if request.method == 'POST' :
         form = ReviewForm(request.POST)
-        if form.is_valid():
+        if form.is_validvalid():
             review = form.save(commit=False)
             review.user = request.user
             review.save()
