@@ -10,8 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY
 SECRET_KEY = os.getenv('SECRET_KEY', 'fallback-secret-key-for-dev')
 
-DEBUG = os.getenv('DEBUG', 'False').lower() in ('true', '1', 't')
-DEBUG = True
+DEBUG = os.getenv('DEBUG', 'False')
 
 
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost').split(',')
