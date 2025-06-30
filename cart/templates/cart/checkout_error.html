@@ -1,0 +1,13 @@
+<!-- templates/cart/checkout_error.html -->
+<!DOCTYPE html>
+<html>
+<head><title>Checkout Error</title></head>
+<body>
+  <h1>Checkout Error</h1>
+  <p>Sorry, something went wrong during checkout.</p>
+  {% if error %}
+  <p>Error: {{ error }}</p>
+  {% endif %}
+  <a href="{% url 'cart:cart' %}">Back to Cart</a>
+</body>
+</html>
