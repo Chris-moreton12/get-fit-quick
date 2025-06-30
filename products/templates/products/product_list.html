@@ -11,6 +11,7 @@
                 <div class="card mb-4">
                     {% if forloop.counter <= 6 and product.image %}
                         <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                        <img src="https://getfitquick3.s3.eu-west-2.amazonaws.com/bottle.jpg" alt="test">
                     {% else %}
                     <p>Image URL: {{ product.image.url }}</p>
                         <img src="https://via.placeholder.com/150" class="card-img-top" alt="{{ product.name }}">
