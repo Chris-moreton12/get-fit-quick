@@ -135,30 +135,36 @@ def checkout_success(request):
     cart, _ = Cart.objects.get_or_create(user=request.user)
     cart_items = CartItem.objects.filter(cart=cart)
 
-    context = {
-        'user': request.user,
-        'cart_items': cart_items,
-        'total': sum(item.price * item.quantity for item in cart_items),
-    }
+    try:
+        context = {
+            'user': request.user,
+            'cart_items': cart_items,
+            'total': sum(item.price * item.quantity for item in cart_items),
+        }
 
-    # Render HTML email template with order summary
-    html_message = render_to_string('cart/order_confirmation_email.html', context)
-    plain_message = strip_tags(html_message)
+        # Render HTML email template with order summary
+        html_message = render_to_string('cart/order_confirmation_email.html', context)
+        plain_message = strip_tags(html_message)
 
-    # Send email to customer
-    send_mail(
-        subject="Thank you for your purchase at GetFitQuick!",
-        message=plain_message,
-        from_email=None,
-        recipient_list=[request.user.email],
-        html_message=html_message,
-    )
+        # Send email to customer
+        send_mail(
+            subject="Thank you for your purchase at GetFitQuick!",
+            message=plain_message,
+            from_email=None,
+            recipient_list=[request.user.email],
+            html_message=html_message,
+        )
 
-    # Clear cart and session data
-    CartItem.objects.filter(cart=cart).delete()
-    request.session.pop('shipping_address_id', None)
+        # Clear cart and session data
+        CartItem.objects.filter(cart=cart).delete()
+        request.session.pop('shipping_address_id', None)
 
-    return render(request, 'cart/checkout_success.html')
+        return render(request, 'cart/checkout_success.html', context)
+
+    except Exception as e:
+        # If error occurs, render same template but with error message in context
+        error_context = {'error_message': str(e)}
+        return render(request, 'cart/checkout_success.html', error_context)
 
 # Remove item from cart
 @require_POST
