@@ -5,6 +5,16 @@
 {% block content %}
     <h1>Your Basket</h1>
 
+    {% if messages %}
+      <div>
+        {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
     <div class="row">
         {% for item in cart_items %}
             <div class="col-md-4">

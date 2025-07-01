@@ -101,6 +101,11 @@ def checkout(request):
     if not address_id:
         return redirect('cart:cart')
 
+    email = (request.user.email or "").strip()
+    if not email:
+        messages.error(request, "Please make sure your account has a valid email address to proceed with payment.")
+        return redirect('cart:cart')
+
     line_items = []
     for item in cart_items:
         item_name = item.product.name if item.product else (item.subscription.name if item.subscription else 'Unknown')
@@ -118,7 +123,7 @@ def checkout(request):
             payment_method_types=['card'],
             line_items=line_items,
             mode='payment',
-            customer_email=request.user.email,
+            customer_email=email,
             success_url=request.build_absolute_uri('/cart/checkout/success/'),
             cancel_url=request.build_absolute_uri('/cart/'),
         )
