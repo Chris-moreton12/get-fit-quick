@@ -1,16 +1,15 @@
 from django.shortcuts import render, redirect
-from .forms import ContactForm  # Import the ContactForm
-from django.contrib.auth.forms import UserCreationForm
+from .forms import ContactForm, CustomUserCreationForm  # Import the custom user creation form and contact form
 
 # Signup view
 def signup(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST)  # Use custom form with email required
         if form.is_valid():
             form.save()
             return redirect('login')  # Redirect to login page after successful signup
     else:
-        form = UserCreationForm()
+        form = CustomUserCreationForm()
 
     return render(request, 'registration/signup.html', {'form': form})
 
@@ -29,4 +28,3 @@ def contact(request):
 # Thank you view (for after form submission)
 def thank_you(request):
     return render(request, 'thank_you.html')  # This will render the 'thank_you.html' template
-
