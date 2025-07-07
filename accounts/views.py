@@ -1,32 +1,30 @@
 from django.shortcuts import render, redirect
-from django.contrib import messages
-from django.contrib.auth import login
-from .forms import ContactForm, CustomUserCreationForm
+from .forms import ContactForm, CustomUserCreationForm  # Import the custom user creation form and contact form
 
+# Signup view
+def signup(request):
+    if request.method == 'POST':
+        form = CustomUserCreationForm(request.POST)  # Use custom form with email required
+        if form.is_valid():
+            form.save()
+            return redirect('login')  # Redirect to login page after successful signup
+    else:
+        form = CustomUserCreationForm()
+
+    return render(request, 'registration/signup.html', {'form': form})
+
+# Contact view for the contact page
 def contact(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
-            form.save()  # Save to database
-            messages.success(request, "Thank you! Your message has been sent.")
-            return redirect('thank_you')  # Redirect to thank you page
+            # After successful form submission, redirect to the thank_you page
+            return redirect('thank_you')  # This redirects to the 'thank_you'
     else:
         form = ContactForm()
 
     return render(request, 'contact.html', {'form': form})
 
+# Thank you view (for after form submission)
 def thank_you(request):
-    return render(request, 'thank_you.html')
-
-def signup(request):
-    if request.method == 'POST':
-        form = CustomUserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request, user)  # Log user in after signup
-            messages.success(request, "Account created successfully.")
-            return redirect('products')
-    else:
-        form = CustomUserCreationForm()
-    return render(request, 'signup.html', {'form': form})
-
+    return render(request, 'thank_you.html')  # This will render the 'thank_you.html' template
