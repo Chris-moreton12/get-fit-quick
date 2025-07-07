@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
-from .forms import ContactForm
 from django.contrib import messages
+from django.contrib.auth import login
+from .forms import ContactForm, CustomUserCreationForm
 
 def contact(request):
     if request.method == 'POST':
@@ -16,3 +17,16 @@ def contact(request):
 
 def thank_you(request):
     return render(request, 'thank_you.html')
+
+def signup(request):
+    if request.method == 'POST':
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)  # Log user in after signup
+            messages.success(request, "Account created successfully.")
+            return redirect('login')
+    else:
+        form = CustomUserCreationForm()
+    return render(request, 'signup.html', {'form': form})
+

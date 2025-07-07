@@ -9,7 +9,6 @@ class UserProfile(models.Model):
     def __str__(self):
         return self.user.username
 
-        from django.db import models
 
 class ContactMessage(models.Model):
     name = models.CharField(max_length=100)
@@ -20,4 +19,3 @@ class ContactMessage(models.Model):
 
     def __str__(self):
         return f"{self.subject} from {self.name}"
-
