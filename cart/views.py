@@ -62,6 +62,7 @@ def add_product_to_cart(request, product_id):
             price=product.price,
             quantity=1
         )
+        messages.success(request, f"{product.name} added to basket!")
 
     referer = request.META.get('HTTP_REFERER')
     return redirect(referer or 'products:product_list')
@@ -84,6 +85,7 @@ def add_subscription_to_cart(request, subscription_id):
         price=subscription.price,
         quantity=1
     )
+    messages.success(request, f"{subscription.name} subscription added to your basket!")
 
     referer = request.META.get('HTTP_REFERER')
     return redirect(referer or 'subscriptions:subscription_list')
@@ -172,6 +174,7 @@ def remove_from_cart(request, item_id):
     try:
         item = CartItem.objects.get(id=item_id, cart=cart)
         item.delete()
+        messages.warning(request, "Item removed from basket.")
     except CartItem.DoesNotExist:
         pass
     return redirect('cart:cart')
