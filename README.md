@@ -28,18 +28,18 @@ GetFitQuick is a subscription-based fitness and nutrition service that provides 
 ## Deployed Site
 - **Site Images**
  
-![Product Page Desktop](documentation/screenshots/home_page)
-![Product Page Mobile](documentation/screenshots/home_page_mobile)
-![Subscription Page Desktop](documentation/screenshots/subscription_page)
-![Subscription Page Mobile](documentation/screenshots/subscription_page_mobile)
-![Newsletter Page Desktop](documentation/screenshots/newsletter_page)
-![Newsletter Page Mobile](documentation/screenshots/newsletter_page_mobile)
-![Reviews Page Desktop](documentation/screenshots/review_page)
-![Reviews Page Mobile](documentation/screenshots/review_page_mobile)
-![Contact Us Page Desktop](documentation/screenshots/contact_page)
-![Contact Us Page Mobile](documentation/screenshots/contact_page_mobile)
-![Cart Desktop](documentation/screenshots/cart_page)
-![Cart Mobile](documentation/screenshots/cart_page_mobile)
+![Product Page Desktop](documentation/screenshots/home_page.png)
+![Product Page Mobile](documentation/screenshots/home_page_mobile.png)
+![Subscription Page Desktop](documentation/screenshots/subscription_page.png)
+![Subscription Page Mobile](documentation/screenshots/subscription_page_mobile.png)
+![Newsletter Page Desktop](documentation/screenshots/newsletter_page.png)
+![Newsletter Page Mobile](documentation/screenshots/newsletter_page_mobile.png)
+![Reviews Page Desktop](documentation/screenshots/review_page.png)
+![Reviews Page Mobile](documentation/screenshots/review_page_mobile.png)
+![Contact Us Page Desktop](documentation/screenshots/contact_page.png)
+![Contact Us Page Mobile](documentation/screenshots/contact_page_mobile.png)
+![Cart Desktop](documentation/screenshots/cart_page.png)
+![Cart Mobile](documentation/screenshots/cart_page_mobile.png)
 
 
 ## UX
