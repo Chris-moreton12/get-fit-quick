@@ -242,6 +242,7 @@ Validated using [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
 
 ### Lighthouse
 [Lighthouse test](documentation/screenshots/lighthouse_testing.png)
+[Lighthouse test](documentation/screenshots/accessibility.png)
 Tests passed for:
 - Accessibility - 98
 - SEO - 90
