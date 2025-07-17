@@ -28,12 +28,18 @@ GetFitQuick is a subscription-based fitness and nutrition service that provides 
 ## Deployed Site
 - **Site Images**
  
-![Product Page](documentation/screenshots/)
-![Subscription Page](documentation/screenshots/)
-![Newsletter Page](documentation/screenshots/)
-![Reviews Page](documentation/screenshots/)
-![Contact Us Page](documentation/screenshots/)
-![Cart](documentation/screenshots/)
+![Product Page Desktop](documentation/screenshots/home_page)
+![Product Page Mobile](documentation/screenshots/home_page_mobile)
+![Subscription Page Desktop](documentation/screenshots/subscription_page)
+![Subscription Page Mobile](documentation/screenshots/subscription_page_mobile)
+![Newsletter Page Desktop](documentation/screenshots/newsletter_page)
+![Newsletter Page Mobile](documentation/screenshots/newsletter_page_mobile)
+![Reviews Page Desktop](documentation/screenshots/review_page)
+![Reviews Page Mobile](documentation/screenshots/review_page_mobile)
+![Contact Us Page Desktop](documentation/screenshots/contact_page)
+![Contact Us Page Mobile](documentation/screenshots/contact_page_mobile)
+![Cart Desktop](documentation/screenshots/cart_page)
+![Cart Mobile](documentation/screenshots/cart_page_mobile)
 
 
 ## UX
