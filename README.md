@@ -133,21 +133,14 @@ In order for best practices to be used, I developed wireframes to potray what th
 I have used [Wireframe](https://wireframe.cc) to design the wireframes for my site.
 - **Desktop Wireframes**
 
-![Product Page](documentation/screenshots/)
-![Subscription Page](documentation/screenshots/)
-![Newsletter Page](documentation/screenshots/)
-![Reviews Page](documentation/screenshots/)
-![Contact Us Page](documentation/screenshots/)
-![Cart](documentation/screenshots/)
+![Product Page](documentation/screenshots/home_page_wireframe.png)
+![Subscription Page](documentation/screenshots/subscription_page_wireframe.png)
+![Contact Us Page](documentation/screenshots/contact_page_wireframe.png)
 
 - **Mobile Wireframes**
 
-![Product Page](documentation/screenshots/)
-![Subscription Page](documentation/screenshots/)
-![Newsletter Page](documentation/screenshots/)
-![Reviews Page](documentation/screenshots/)
-![Contact Us Page](documentation/screenshots/)
-![Cart](documentation/screenshots/)
+![Product Page](documentation/screenshots/home_page_wireframe_phone.png)
+
 
 ---
 
