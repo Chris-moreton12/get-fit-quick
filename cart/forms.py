@@ -1,6 +1,6 @@
 from django import forms
 from .models import ShippingAddress
-
+# Code assits from Stackoverflow https://stackoverflow.com/questions/9878475/django-modelform-override-widget/22250192?utm_
 class ShippingAddressForm(forms.ModelForm):
     class Meta:
         model = ShippingAddress

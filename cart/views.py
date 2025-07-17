@@ -16,7 +16,7 @@ from subscriptions.models import SubscriptionPlan
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
-
+# Code assits from stack overflow https://stackoverflow.com/questions/68373094/how-can-i-create-stripe-checkout-session-for-multiple-products-with-django-and-j?utm_
 @login_required
 def cart(request):
     cart, _ = Cart.objects.get_or_create(user=request.user)

@@ -1,5 +1,5 @@
 from django.db import models
-
+# ode assists from geeks for geeks https://www.geeksforgeeks.org/python/e-commerce-product-catalog-using-django/?utm_
 class Product(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()

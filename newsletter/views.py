@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Comment
 from .forms import CommentForm
 
+#https://docs.djangoproject.com/en/5.2/topics/class-based-views/generic-editing/#editing-objects
 @login_required
 def comment_board(request):
     comments = Comment.objects.all().order_by('-created_at')
