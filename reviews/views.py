@@ -11,7 +11,7 @@ def review_list(request):
 def add_review(request):
     if request.method == 'POST' :
         form = ReviewForm(request.POST)
-        if form.is_validvalid():
+        if form.is_valid():
             review = form.save(commit=False)
             review.user = request.user
             review.save()
